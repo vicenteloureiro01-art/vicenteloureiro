@@ -556,4 +556,65 @@
             modal.classList.add('opacity-0', 'pointer-events-none');
         }
 
-        // Script da Funcionalidade de Agendamento por
+        // Script da Funcionalidade de Agendamento por Calendário
+        let selectedTimeSlot = '';
+
+        const today = new Date().toISOString().split('T')[0];
+        const bookingDateInput = document.getElementById('bookingDate');
+        if (bookingDateInput) {
+            bookingDateInput.min = today;
+            bookingDateInput.value = today;
+        }
+
+        function selectTime(time) {
+            selectedTimeSlot = time;
+            const buttons = document.querySelectorAll('.time-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-gold', 'text-black', 'border-brand-gold', 'font-bold');
+                btn.classList.add('glass-card', 'text-gray-300');
+            });
+
+            event.currentTarget.classList.remove('glass-card', 'text-gray-300');
+            event.currentTarget.classList.add('bg-brand-gold', 'text-black', 'border-brand-gold', 'font-bold');
+        }
+
+        function sendReservationRequest() {
+            const date = document.getElementById('bookingDate').value;
+            const name = document.getElementById('clientName').value.trim();
+            const guests = document.getElementById('guests').value;
+            const location = document.getElementById('location').value.trim();
+            const notes = document.getElementById('notes').value.trim();
+
+            if (!name) {
+                alert('Por favor, insere o teu nome.');
+                return;
+            }
+            if (!selectedTimeSlot) {
+                alert('Por favor, seleciona um horário pretendido.');
+                return;
+            }
+
+            const phoneNumber = "351937461528";
+
+            let message = `Olá Chef Vicente! Gostaria de fazer uma *Solicitação de Reserva*:%0A%0A`;
+            message += `- *Nome:* ${name}%0A`;
+            message += `- *Data:* ${date}%0A`;
+            message += `- *Horário:* ${selectedTimeSlot}%0A`;
+            message += `- *Nº de Pessoas:* ${guests}%0A`;
+            if (location) message += `- *Local:* ${location}%0A`;
+            if (notes) message += `- *Observações:* ${notes}%0A`;
+            message += `%0AFico a aguardar a confirmação da disponibilidade!`;
+
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        renderRecipes();
+    </script>
+</body>
+</html>
