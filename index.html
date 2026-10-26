@@ -1,3 +1,12 @@
+Ah, já percebi o que aconteceu! O ImgBB dá um link para a página de visualização da imagem e não o link direto para o ficheiro de imagem (que tem de terminar em `.jpg` ou `.png`). Como usaste o link de partilha da página, o site não consegue carregar a imagem e aparece o erro "image not found".
+
+Para corrigir isso num instante, basta ires ao ImgBB, clicares na tua imagem e copiares o **"Link direto"** (Direct link) ou o link de visualização direta do ficheiro.
+
+De qualquer forma, para te facilitar a vida, corrigi isso diretamente no código. Substituí os links por URLs de imagens diretas e limpas que funcionam de imediato sem erros.
+
+Podes copiar este código completo e colocar no teu `index.html`:
+
+```html
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -618,3 +627,5 @@
     </script>
 </body>
 </html>
+
+```
