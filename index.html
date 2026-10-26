@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef de Cozinha Privado & Receitas Exclusivas</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#D4AF37',
+                            dark: '#121212',
+                            card: '#1E1E1E',
+                            accent: '#C5A059',
+                            muted: '#A0A0A0'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0F0F0F;
+            color: #F3F4F6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+        .glass-card {
+            background: rgba(30, 30, 30, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .recipe-modal {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-gold selection:text-black min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-gold to-yellow-200 flex items-center justify-center text-black font-bold text-xl shadow-lg shadow-brand-gold/20">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+                <div>
+                    <span class="serif-title text-xl font-bold tracking-wide text-white block">Private Chef</span>
+                    <span class="text-xs text-brand-gold uppercase tracking-widest block font-semibold">Gastronomia Exclusiva</span>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-brand-gold transition-colors">Sobre Mim</a>
+                <a href="#recipes" class="hover:text-brand-gold transition-colors">Menu & Receitas</a>
+                <a href="#services" class="hover:text-brand-gold transition-colors">Serviços</a>
+                <a href="#contact" class="px-5 py-2.5 rounded-full bg-brand-gold text-black font-semibold hover:bg-yellow-400 transition-all shadow-md shadow-brand-gold/20">Contratar Chef</a>
+            </nav>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-white focus:outline-none">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-brand-card border-b border-white/10 px-4 pt-2 pb-6 space-y-4">
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-gold py-1">Sobre Mim</a>
+            <a href="#recipes" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-gold py-1">Menu & Receitas</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-gold py-1">Serviços</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="inline-block w-full text-center py-2.5 rounded-full bg-brand-gold text-black font-semibold">Contratar Chef</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative py-20 lg:py-32 overflow-hidden flex items-center justify-center">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop')] bg-cover bg-center opacity-25"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-[#0F0F0F]"></div>
+            
+            <div class="relative max-w-5xl mx-auto px-4 text-center z-10">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-semibold tracking-wider uppercase mb-6 border border-brand-gold/30">
+                    Experiência Gastronómica Privada
+                </span>
+                <h1 class="serif-title text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
+                    Leve a Alta Cozinha para a <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-yellow-200 to-brand-gold">Sua Mesa</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                    Explore o meu livro de receitas de autor ou contrate um serviço exclusivo de Private Chef para jantares, eventos e momentos inesquecíveis.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#recipes" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-gold text-black font-bold hover:bg-yellow-400 transition-all shadow-lg shadow-brand-gold/20 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-book-open"></i> Ver Livro de Receitas
+                    </a>
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full glass-card text-white font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2 border border-white/20">
+                        <i class="fa-solid fa-calendar-check"></i> Reservar Data
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-black/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative">
+                        <div class="aspect-square rounded-2xl overflow-hidden border border-brand-gold/20 shadow-2xl relative">
+                            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=1000&auto=format&fit=crop" alt="Private Chef" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 glass-card p-6 rounded-2xl hidden sm:block">
+                            <p class="serif-title text-3xl font-bold text-brand-gold">100%</p>
+                            <p class="text-xs text-gray-400 uppercase tracking-wider">Dedicação Personalizada</p>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-brand-gold text-sm font-semibold uppercase tracking-widest block mb-2">Paixão & Sabor</span>
+                        <h2 class="serif-title text-3xl sm:text-4xl font-bold text-white mb-6">A Cozinha Como Arte e Partilha</h2>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            Acredito que uma grande refeição vai muito além do prato. Trata-se da seleção rigorosa dos ingredientes mais frescos, do respeito pelas técnicas e da criação de momentos de convívio únicos.
+                        </p>
+                        <p class="text-gray-400 mb-8 leading-relaxed">
+                            Seja para um jantar íntimo a dois, uma reunião de família ou um workshop gastronómico, levo toda a experiência do restaurante para o conforto do seu lar.
+                        </p>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-white/10 pt-6">
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Ingredientes</h4>
+                                <p class="text-xs text-gray-400">Locais e Selecionados</p>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Personalizado</h4>
+                                <p class="text-xs text-gray-400">Menus à sua medida</p>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Sem Preocupações</h4>
+                                <p class="text-xs text-gray-400">Serviço Completo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recipe Book Section -->
+        <section id="recipes" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-gold text-sm font-semibold uppercase tracking-widest block mb-2">Especialidades da Casa</span>
+                    <h2 class="serif-title text-3xl sm:text-5xl font-bold text-white mb-4">Livro de Receitas</h2>
+                    <p class="text-gray-400">Explore algumas das minhas criações favoritas. Clique em qualquer prato para ver o modo de preparação completo.</p>
+                </div>
+
+                <!-- Filters -->
+                <div class="flex flex-wrap justify-center gap-2 mb-12">
+                    <button onclick="filterRecipes('all')" class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold bg-brand-gold text-black transition-all">Todos</button>
+                    <button onclick="filterRecipes('entrada')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold glass-card text-gray-300 hover:text-white transition-all">Entradas</button>
+                    <button onclick="filterRecipes('peixe')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold glass-card text-gray-300 hover:text-white transition-all">Peixe</button>
+                    <button onclick="filterRecipes('carne')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold glass-card text-gray-300 hover:text-white transition-all">Carne</button>
+                    <button onclick="filterRecipes('sobremesa')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold glass-card text-gray-300 hover:text-white transition-all">Sobremesas</button>
+                </div>
+
+                <!-- Recipe Grid -->
+                <div id="recipeGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Recipes render dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-black/50 border-y border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-gold text-sm font-semibold uppercase tracking-widest block mb-2">Serviços Privados</span>
+                    <h2 class="serif-title text-3xl sm:text-4xl font-bold text-white mb-4">Como Posso Ajudar?</h2>
+                    <p class="text-gray-400">Soluções gastronómicas adaptadas às suas necessidades.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-card p-8 rounded-2xl hover:border-brand-gold/40 transition-all">
+                        <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-champagne-glasses"></i>
+                        </div>
+                        <h3 class="serif-title text-xl font-bold text-white mb-3">Jantares Privados</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Menu degustação elaborado exclusivamente para a sua ocasião especial. Trato das compras, da preparação, do serviço de mesa e da limpeza final.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl hover:border-brand-gold/40 transition-all">
+                        <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h3 class="serif-title text-xl font-bold text-white mb-3">Eventos & Festas</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Catering personalizado para pequenos grupos, aniversários, reuniões corporativas ou eventos de convívio familiar.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl hover:border-brand-gold/40 transition-all">
+                        <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-hat-cowboy-side"></i>
+                        </div>
+                        <h3 class="serif-title text-xl font-bold text-white mb-3">Workshops ao Domicílio</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Aprenda técnicas de cozinha profissional diretamente na sua cozinha, num ambiente descontraído e divertido.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="glass-card p-8 sm:p-12 rounded-3xl border border-brand-gold/20 shadow-2xl relative overflow-hidden">
+                    <div class="text-center mb-10">
+                        <span class="text-brand-gold text-sm font-semibold uppercase tracking-widest block mb-2">Contacto Direto</span>
+                        <h2 class="serif-title text-3xl sm:text-4xl font-bold text-white">Solicitar Orçamento / Contratar</h2>
+                        <p class="text-gray-400 mt-2 text-sm">Preencha o formulário para enviar uma mensagem direta para o meu WhatsApp.</p>
+                    </div>
+
+                    <form id="contactForm" onsubmit="sendToWhatsApp(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">O seu Nome</label>
+                                <input type="text" id="name" required placeholder="Ex: Maria Silva" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Tipo de Evento</label>
+                                <select id="eventType" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                                    <option value="Jantar Privado">Jantar Privado</option>
+                                    <option value="Evento / Festa">Evento / Festa</option>
+                                    <option value="Workshop">Workshop</option>
+                                    <option value="Outro">Outro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Data Pretendida</label>
+                                <input type="date" id="eventDate" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Nº Estimado de Pessoas</label>
+                                <input type="number" id="guests" placeholder="Ex: 4" min="1" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Detalhes / Preferências</label>
+                            <textarea id="notes" rows="4" placeholder="Indique restrições alimentares, localização aproximada ou preferências de menu..." class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-gold to-yellow-400 text-black font-bold text-lg hover:brightness-110 transition-all shadow-lg shadow-brand-gold/20 flex items-center justify-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i> Enviar Pedido via WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-white/10 text-center text-gray-500 text-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2026 Private Chef & Receitas Exclusivas. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Recipe Modal -->
+    <div id="recipeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none recipe-modal">
+        <div class="glass-card bg-[#181818] border border-brand-gold/30 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative text-left">
+            <button onclick="closeModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <span id="modalCategory" class="text-brand-gold text-xs font-semibold uppercase tracking-widest block mb-2"></span>
+            <h3 id="modalTitle" class="serif-title text-2xl sm:text-3xl font-bold text-white mb-4"></h3>
+            
+            <img id="modalImage" src="" alt="" class="w-full h-64 object-cover rounded-xl mb-6">
+
+            <div class="grid grid-cols-2 gap-4 mb-6 border-y border-white/10 py-4">
+                <div>
+                    <span class="text-xs text-gray-400 block">Tempo de Preparação</span>
+                    <span id="modalTime" class="text-white font-semibold"></span>
+                </div>
+                <div>
+                    <span class="text-xs text-gray-400 block">Dificuldade</span>
+                    <span id="modalDifficulty" class="text-white font-semibold"></span>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-basket-shopping text-brand-gold"></i> Ingredientes
+                    </h4>
+                    <ul id="modalIngredients" class="list-disc list-inside space-y-1 text-gray-300 text-sm"></ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-fire-burner text-brand-gold"></i> Modo de Preparação
+                    </h4>
+                    <ol id="modalSteps" class="list-decimal list-inside space-y-2 text-gray-300 text-sm leading-relaxed"></ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript code -->
+    <script>
+        // Data for recipes
+        const recipes = [
+            {
+                id: 1,
+                category: 'peixe',
+                title: 'Posta de Salmão Grelhada com Legumes ao Vapor',
+                desc: 'Salmão sucinto temperado com azeite, alho e louro, servido com batatas, cenouras e feijão verde.',
+                time: '35 min',
+                difficulty: 'Fácil',
+                image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=800&auto=format&fit=crop',
+                ingredients: [
+                    '2 postas de salmão fresco',
+                    '3 batatas médias',
+                    '2 cenouras',
+                    '200g de feijão verde',
+                    '2 dentes de alho picados',
+                    'Folhas de louro, azeite, sal e pimenta preta q.b.'
+                ],
+                steps: [
+                    'Corte os legumes e leve a cozer em água temperada com sal, escalonando os tempos (cenoura primeiro, seguida das batatas e feijão verde).',
+                    'Tempere o salmão com azeite, alho picado, louro e pimenta preta.',
+                    'Aqueça bem a grelha e sele o salmão até obter uma crosta dourada e o interior suculento.',
+                    'Sirva o salmão regado com um fio de azeite virgem extra acompanhado pelos legumes cozidos.'
+                ]
+            },
+            {
+                id: 2,
+                category: 'entrada',
+                title: 'Carpaccio de Polvo com Vinagrete de Citrinos',
+                desc: 'Laminado fino de polvo cozido, regado com azeite de ervas, flor de sal e vinagrete fresco.',
+                time: '20 min',
+                difficulty: 'Média',
+                image: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=800&auto=format&fit=crop',
+                ingredients: [
+                    '300g de tentáculos de polvo cozidos',
+                    'Sumo de 1/2 limão e 1/2 laranja',
+                    'Azeite virgem extra',
+                    'Salsa fresca e flor de sal'
+                ],
+                steps: [
+                    'Lamine o polvo em rodelas muito finas.',
+                    'Disponha as fatias sobrepostas num prato plano.',
+                    'Emulsione o sumo dos citrinos com o azeite e regue a superfície.',
+                    'Finalize com flor de sal e salsa fresca picada.'
+                ]
+            },
+            {
+                id: 3,
+                category: 'carne',
+                title: 'Nacos de Lombo com Molho de Vinho do Porto',
+                desc: 'Medalhões de novilho corados no ponto perfeito com redução aveludada de Porto e chalotas.',
+                time: '30 min',
+                difficulty: 'Média',
+                image: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop',
+                ingredients: [
+                    '2 nacos de lombo de novilho (200g cada)',
+                    '100ml de Vinho do Porto',
+                    '2 chalotas bem picadas',
+                    '1 colher de sopa de manteiga',
+                    'Sal marinho e pimenta rosa'
+                ],
+                steps: [
+                    'Tempere a carne com sal grosso momentos antes de grelhar.',
+                    'Core os nacos numa frigideira bem quente com azeite.',
+                    'Na mesma frigideira, salteie as chalotas e refresque com o Vinho do Porto.',
+                    'Deixe reduzir o molho e incorpore a manteiga no final para dar brilho.'
+                ]
+            },
+            {
+                id: 4,
+                category: 'sobremesa',
+                title: 'Panna Cotta de Baunilha com Frutos Vermelhos',
+                desc: 'Sobremesa clássica e cremosa aromatizada com vagem de baunilha e coulis caseiro.',
+                time: '25 min (+ 4h frio)',
+                difficulty: 'Fácil',
+                image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=800&auto=format&fit=crop',
+                ingredients: [
+                    '400ml de natas frescas',
+                    '60g de açúcar',
+                    '1 vagem de baunilha',
+                    '3 folhas de gelatina neutra',
+                    '150g de frutos vermelhos frescos'
+                ],
+                steps: [
+                    'Demulhe a gelatina em água fria.',
+                    'Aqueça as natas com o açúcar e as sementes da vagem de baunilha.',
+                    'Junte a gelatina escorrida e misture bem. Distribua por formas e leve ao frigorífico.',
+                    'Sirva com o coulis de frutos vermelhos por cima.'
+                ]
+            }
+        ];
+
+        // Render recipes
+        function renderRecipes(filter = 'all') {
+            const grid = document.getElementById('recipeGrid');
+            grid.innerHTML = '';
+
+            const filtered = filter === 'all' ? recipes : recipes.filter(r => r.category === filter);
+
+            filtered.forEach(recipe => {
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-2xl overflow-hidden shadow-xl hover:border-brand-gold/40 transition-all cursor-pointer flex flex-col justify-between';
+                card.onclick = () => openModal(recipe.id);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="${recipe.image}" alt="${recipe.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <span class="absolute top-3 left-3 bg-black/70 backdrop-blur-md border border-white/10 text-brand-gold text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+                                ${recipe.category}
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="serif-title text-xl font-bold text-white mb-2 hover:text-brand-gold transition-colors">${recipe.title}</h3>
+                            <p class="text-gray-400 text-sm line-clamp-2 leading-relaxed mb-4">${recipe.desc}</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex items-center justify-between text-xs text-gray-400 border-t border-white/5 pt-4">
+                        <span><i class="fa-regular fa-clock text-brand-gold mr-1"></i> ${recipe.time}</span>
+                        <span class="text-brand-gold font-medium">Ver Receita →</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter button styles
+        function filterRecipes(cat) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-gold', 'text-black');
+                btn.classList.add('glass-card', 'text-gray-300');
+            });
+            event.target.classList.remove('glass-card', 'text-gray-300');
+            event.target.classList.add('bg-brand-gold', 'text-black');
+            renderRecipes(cat);
+        }
+
+        // Modal Functions
+        function openModal(id) {
+            const r = recipes.find(item => item.id === id);
+            if(!r) return;
+
+            document.getElementById('modalCategory').innerText = r.category;
+            document.getElementById('modalTitle').innerText = r.title;
+            document.getElementById('modalImage').src = r.image;
+            document.getElementById('modalTime').innerText = r.time;
+            document.getElementById('modalDifficulty').innerText = r.difficulty;
+
+            const ingList = document.getElementById('modalIngredients');
+            ingList.innerHTML = r.ingredients.map(i => `<li>${i}</li>`).join('');
+
+            const stepsList = document.getElementById('modalSteps');
+            stepsList.innerHTML = r.steps.map(s => `<li>${s}</li>`).join('');
+
+            const modal = document.getElementById('recipeModal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('recipeModal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // WhatsApp Form Handler
+        function sendToWhatsApp(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const eventType = document.getElementById('eventType').value;
+            const date = document.getElementById('eventDate').value;
+            const guests = document.getElementById('guests').value;
+            const notes = document.getElementById('notes').value;
+
+            // Insere aqui o teu número com indicativo (Ex: 351910000000)
+            const phoneNumber = "351910000000"; 
+
+            const text = `Olá Chef! Gostaria de solicitar um orçamento:%0A%0A- *Nome:* ${name}%0A- *Tipo de Evento:* ${eventType}%0A- *Data Pretendida:* ${date || 'A definir'}%0A- *Nº de Pessoas:* ${guests || 'N/A'}%0A- *Notas/Preferências:* ${notes || 'Nenhuma'}`;
+
+            window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Initial render
+        renderRecipes();
+    </script>
+</body>
+</html>
