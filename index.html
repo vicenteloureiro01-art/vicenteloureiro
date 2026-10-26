@@ -326,7 +326,6 @@
 
     <!-- JavaScript code -->
     <script>
-        // Data for recipes with multi-image support
         const recipes = [
             {
                 id: 1,
@@ -347,10 +346,10 @@
                     'Folhas de louro, azeite, sal e pimenta preta q.b.'
                 ],
                 steps: [
-                    'Corte os legumes e leve a cozer em água temperada com sal, escalonando os tempos (cenoura primeiro, seguida das batatas e feijão verde).',
+                    'Corte os legumes e leve a cozer em água temperada com sal, escalonando os tempos.',
                     'Tempere o salmão com azeite, alho picado, louro e pimenta preta.',
-                    'Aqueça bem a grelha e sele o salmão até obter uma crosta dourada e o interior suculento.',
-                    'Sirva o salmão regado com um fio de azeite virgem extra acompanhado pelos legumes cozidos.'
+                    'Aqueça bem a grelha e sele o salmão até obter uma crosta dourada.',
+                    'Sirva o salmão regado com um fio de azeite virgem extra acompanhado pelos legumes.'
                 ]
             },
             {
@@ -384,8 +383,8 @@
                 time: '30 min',
                 difficulty: 'Média',
                 images: [
-                    'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=800&auto=format&fit=crop'
+                    'https://i.ibb.co/3yJJTzDz/photo.jpg',
+                    'https://i.ibb.co/jYG0qNp/photo.jpg'
                 ],
                 ingredients: [
                     'Batatas grandes',
@@ -424,7 +423,7 @@
                 ]
             }
         ];
-        // Track image index for each card carousel
+
         const cardIndices = {};
 
         function renderRecipes(filter = 'all') {
@@ -502,7 +501,6 @@
             renderRecipes(cat);
         }
 
-        // Filter button styles
         function filterRecipes(cat) {
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('bg-brand-gold', 'text-black', 'active');
@@ -513,7 +511,6 @@
             renderRecipes(cat);
         }
 
-        // Modal Functions with Carousel Support
         let modalCurrentImgIdx = 0;
         let currentModalRecipe = null;
 
@@ -577,7 +574,6 @@
             modal.classList.add('opacity-0', 'pointer-events-none');
         }
 
-        // WhatsApp Form Handler
         function sendToWhatsApp(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
@@ -593,13 +589,11 @@
             window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
         }
 
-        // Mobile Menu Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
         }
 
-        // Initial render
         renderRecipes();
     </script>
 </body>
