@@ -49,6 +49,11 @@
         .recipe-modal {
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
+        /* Estilo personalizado para os seletores de data nativos ficarem escuros e elegantes */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-gold selection:text-black min-h-screen flex flex-col justify-between">
@@ -67,7 +72,6 @@
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
                 <a href="#about" class="hover:text-brand-gold transition-colors">Sobre Mim</a>
                 <a href="#recipes" class="hover:text-brand-gold transition-colors">Menu & Receitas</a>
-                <a href="#services" class="hover:text-brand-gold transition-colors">Serviços</a>
                 <a href="#reserva" class="hover:text-brand-gold transition-colors">Agendar / Reservar</a>
             </nav>
             <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-white focus:outline-none">
@@ -78,7 +82,6 @@
         <div id="mobileMenu" class="hidden md:hidden bg-brand-card border-b border-white/10 px-4 pt-2 pb-6 space-y-4">
             <a href="#about" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-gold py-1">Sobre Mim</a>
             <a href="#recipes" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-gold py-1">Menu & Receitas</a>
-            <a href="#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-gold py-1">Serviços</a>
             <a href="#reserva" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-gold py-1">Agendar / Reservar</a>
         </div>
     </header>
@@ -96,7 +99,7 @@
                     Leve a Alta Cozinha para a <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-yellow-200 to-brand-gold">Sua Mesa</span>
                 </h1>
                 <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-                    Explore o meu livro de receitas de autor ou contrate um serviço exclusivo de Private Chef para jantares, eventos e momentos inesquecíveis.
+                    Explore o meu livro de receitas de autor ou contrate um serviço exclusivo de Private Chef para jantares e momentos inesquecíveis.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <a href="#recipes" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-gold text-black font-bold hover:bg-yellow-400 transition-all shadow-lg shadow-brand-gold/20 flex items-center justify-center gap-2">
@@ -129,7 +132,7 @@
                             Acredito que uma grande refeição vai muito além do prato. Trata-se da seleção rigorosa dos ingredientes mais frescos, do respeito pelas técnicas e da criação de momentos de convívio únicos.
                         </p>
                         <p class="text-gray-400 mb-8 leading-relaxed">
-                            Seja para um jantar íntimo a dois, uma reunião de família ou um workshop gastronómico, levo toda a experiência do restaurante para o conforto do seu lar.
+                            Seja para um jantar íntimo a dois ou uma reunião de família, levo toda a dedicação da alta cozinha para o conforto do seu lar.
                         </p>
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-white/10 pt-6">
                             <div>
@@ -173,79 +176,47 @@
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services" class="py-20 bg-black/50 border-y border-white/5">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <span class="text-brand-gold text-sm font-semibold uppercase tracking-widest block mb-2">Serviços Privados</span>
-                    <h2 class="serif-title text-3xl sm:text-4xl font-bold text-white mb-4">Como Posso Ajudar?</h2>
-                    <p class="text-gray-400">Soluções gastronómicas adaptadas às suas necessidades.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="glass-card p-8 rounded-2xl hover:border-brand-gold/40 transition-all">
-                        <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6">
-                            <i class="fa-solid fa-champagne-glasses"></i>
-                        </div>
-                        <h3 class="serif-title text-xl font-bold text-white mb-3">Jantares Privados</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            Menu degustação elaborado exclusivamente para a sua ocasião especial. Trato das compras, da preparação, do serviço de mesa e da limpeza final.
-                        </p>
-                    </div>
-                    <div class="glass-card p-8 rounded-2xl hover:border-brand-gold/40 transition-all">
-                        <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6">
-                            <i class="fa-solid fa-users"></i>
-                        </div>
-                        <h3 class="serif-title text-xl font-bold text-white mb-3">Eventos & Festas</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            Catering personalizado para pequenos grupos, aniversários, reuniões corporativas ou eventos de convívio familiar.
-                        </p>
-                    </div>
-                    <div class="glass-card p-8 rounded-2xl hover:border-brand-gold/40 transition-all">
-                        <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6">
-                            <i class="fa-solid fa-hat-cowboy-side"></i>
-                        </div>
-                        <h3 class="serif-title text-xl font-bold text-white mb-3">Workshops ao Domicílio</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            Aprenda técnicas de cozinha profissional diretamente na sua cozinha, num ambiente descontraído e divertido.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Availability & Reservation Section (Unified) -->
+        <!-- Availability & Reservation Section (Calendar UI) -->
         <section id="reserva" class="py-20 bg-black/40 border-b border-white/5">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <span class="text-brand-gold text-sm font-semibold uppercase tracking-widest block mb-2">Disponibilidade & Agenda</span>
                     <h2 class="serif-title text-3xl sm:text-4xl font-bold text-white mb-4">Consulta de Disponibilidade & Pedido de Reserva</h2>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Escolhe o dia, o horário e o tipo de evento pretendido. As solicitações não são confirmadas automaticamente: após o teu pedido, entrarei em contacto imediato para validar a disponibilidade final!
+                        Escolhe diretamente no calendário o dia e o horário pretendido. As solicitações são enviadas para validação direta para garantir a melhor gestão do serviço!
                     </p>
                 </div>
 
                 <div class="glass-card p-8 sm:p-12 rounded-3xl border border-brand-gold/20 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <!-- Seleção de Data e Hora (Esquerda) -->
+                    
+                    <!-- Calendário Visual Interativo (Esquerda) -->
                     <div class="lg:col-span-6 space-y-6">
                         <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">1. Seleciona a Data Pretendida</label>
-                            <input type="date" id="bookingDate" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-brand-gold mb-3 flex items-center gap-2">
+                                <i class="fa-solid fa-calendar-days"></i> 1. Seleciona a Data no Calendário
+                            </label>
+                            <!-- Input de Data estilizado como um painel de calendário elegante -->
+                            <div class="bg-black/60 border border-brand-gold/30 rounded-2xl p-4 text-center">
+                                <input type="date" id="bookingDate" class="w-full bg-transparent text-white text-lg font-semibold py-3 px-4 focus:outline-none cursor-pointer text-center">
+                            </div>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">2. Seleciona o Horário Estimado</label>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-brand-gold mb-3 flex items-center gap-2">
+                                <i class="fa-solid fa-clock"></i> 2. Seleciona o Horário Pretendido
+                            </label>
                             <div class="grid grid-cols-2 gap-3" id="timeSlots">
-                                <button type="button" onclick="selectTime('12:30')" class="time-btn glass-card p-3 rounded-xl hover:border-brand-gold text-gray-300 hover:text-white font-medium text-sm transition-all text-center">
-                                    <i class="fa-regular fa-clock mr-1 text-brand-gold"></i> Almoço (12:30)
+                                <button type="button" onclick="selectTime('Almoço (12:30)')" class="time-btn glass-card p-3.5 rounded-xl hover:border-brand-gold text-gray-300 hover:text-white font-medium text-sm transition-all text-center">
+                                    Almoço <span class="block text-xs text-brand-gold mt-0.5">12:30</span>
                                 </button>
-                                <button type="button" onclick="selectTime('13:30')" class="time-btn glass-card p-3 rounded-xl hover:border-brand-gold text-gray-300 hover:text-white font-medium text-sm transition-all text-center">
-                                    <i class="fa-regular fa-clock mr-1 text-brand-gold"></i> Almoço (13:30)
+                                <button type="button" onclick="selectTime('Almoço (13:30)')" class="time-btn glass-card p-3.5 rounded-xl hover:border-brand-gold text-gray-300 hover:text-white font-medium text-sm transition-all text-center">
+                                    Almoço <span class="block text-xs text-brand-gold mt-0.5">13:30</span>
                                 </button>
-                                <button type="button" onclick="selectTime('19:30')" class="time-btn glass-card p-3 rounded-xl hover:border-brand-gold text-gray-300 hover:text-white font-medium text-sm transition-all text-center">
-                                    <i class="fa-regular fa-clock mr-1 text-brand-gold"></i> Jantar (19:30)
+                                <button type="button" onclick="selectTime('Jantar (19:30)')" class="time-btn glass-card p-3.5 rounded-xl hover:border-brand-gold text-gray-300 hover:text-white font-medium text-sm transition-all text-center">
+                                    Jantar <span class="block text-xs text-brand-gold mt-0.5">19:30</span>
                                 </button>
-                                <button type="button" onclick="selectTime('20:30')" class="time-btn glass-card p-3 rounded-xl hover:border-brand-gold text-gray-300 hover:text-white font-medium text-sm transition-all text-center">
-                                    <i class="fa-regular fa-clock mr-1 text-brand-gold"></i> Jantar (20:30)
+                                <button type="button" onclick="selectTime('Jantar (20:30)')" class="time-btn glass-card p-3.5 rounded-xl hover:border-brand-gold text-gray-300 hover:text-white font-medium text-sm transition-all text-center">
+                                    Jantar <span class="block text-xs text-brand-gold mt-0.5">20:30</span>
                                 </button>
                             </div>
                         </div>
@@ -253,7 +224,9 @@
 
                     <!-- Formulário de Detalhes (Direita) -->
                     <div class="lg:col-span-6 space-y-4">
-                        <h3 class="serif-title font-semibold text-white text-lg border-b border-white/10 pb-2">3. Detalhes do Evento</h3>
+                        <h3 class="serif-title font-semibold text-white text-lg border-b border-white/10 pb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-user-pen text-brand-gold"></i> 3. Detalhes do Jantar
+                        </h3>
                         
                         <div>
                             <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Teu Nome Completo</label>
@@ -262,23 +235,13 @@
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Tipo de Evento</label>
-                                <select id="eventType" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
-                                    <option value="Jantar Privado">Jantar Privado</option>
-                                    <option value="Evento / Festa">Evento / Festa</option>
-                                    <option value="Workshop">Workshop</option>
-                                    <option value="Outro">Outro</option>
-                                </select>
-                            </div>
-                            <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Nº de Pessoas</label>
                                 <input type="number" id="guests" min="1" max="30" value="4" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
                             </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Localidade</label>
-                            <input type="text" id="location" placeholder="Ex: Lisboa / Portimão" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Localidade</label>
+                                <input type="text" id="location" placeholder="Ex: Lisboa / Portimão" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
+                            </div>
                         </div>
 
                         <div>
@@ -294,6 +257,7 @@
                             * O envio da solicitação não garante a reserva. A data fica confirmada após validação direta do Chef.
                         </p>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -594,7 +558,7 @@
             modal.classList.add('opacity-0', 'pointer-events-none');
         }
 
-        // Script da Funcionalidade de Agendamento por Solicitação
+        // Script da Funcionalidade de Agendamento por Calendário
         let selectedTimeSlot = '';
 
         const today = new Date().toISOString().split('T')[0];
@@ -619,7 +583,6 @@
         function sendReservationRequest() {
             const date = document.getElementById('bookingDate').value;
             const name = document.getElementById('clientName').value.trim();
-            const eventType = document.getElementById('eventType').value;
             const guests = document.getElementById('guests').value;
             const location = document.getElementById('location').value.trim();
             const notes = document.getElementById('notes').value.trim();
@@ -637,7 +600,6 @@
 
             let message = `Olá Chef Vicente! Gostaria de fazer uma *Solicitação de Reserva*:%0A%0A`;
             message += `- *Nome:* ${name}%0A`;
-            message += `- *Tipo de Evento:* ${eventType}%0A`;
             message += `- *Data:* ${date}%0A`;
             message += `- *Horário:* ${selectedTimeSlot}%0A`;
             message += `- *Nº de Pessoas:* ${guests}%0A`;
