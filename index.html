@@ -160,7 +160,7 @@
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <span class="text-brand-gold text-sm font-semibold uppercase tracking-widest block mb-2">Especialidades da Casa</span>
                     <h2 class="serif-title text-3xl sm:text-5xl font-bold text-white mb-4">Livro de Receitas</h2>
-                    <p class="text-gray-400">Explore algumas das minhas criações favoritas. Clique em qualquer prato para ver o modo de preparação completo.</p>
+                    <p class="text-gray-400">Explore algumas das minhas criações favoritas. Deslize pelas fotos de cada prato e clique para ver a receita completa.</p>
                 </div>
 
                 <!-- Filters -->
@@ -277,21 +277,23 @@
     <!-- Footer -->
     <footer class="bg-black py-8 border-t border-white/10 text-center text-gray-500 text-sm">
         <div class="max-w-7xl mx-auto px-4">
-            <p>&copy; 2026 Private Chef & Receitas Exclusivas. Todos os direitos reservados.</p>
+            <p>&copy; 2026 O Maluco das receitas Vicente Loureiro. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <!-- Recipe Modal -->
     <div id="recipeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none recipe-modal">
         <div class="glass-card bg-[#181818] border border-brand-gold/30 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative text-left">
-            <button onclick="closeModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center transition-colors">
+            <button onclick="closeModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center transition-colors z-10">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
 
             <span id="modalCategory" class="text-brand-gold text-xs font-semibold uppercase tracking-widest block mb-2"></span>
             <h3 id="modalTitle" class="serif-title text-2xl sm:text-3xl font-bold text-white mb-4"></h3>
             
-            <img id="modalImage" src="" alt="" class="w-full h-64 object-cover rounded-xl mb-6">
+            <div id="modalImagesContainer" class="relative h-64 rounded-xl overflow-hidden mb-6 bg-black">
+                <!-- Carousel injected dynamically -->
+            </div>
 
             <div class="grid grid-cols-2 gap-4 mb-6 border-y border-white/10 py-4">
                 <div>
@@ -324,7 +326,7 @@
 
     <!-- JavaScript code -->
     <script>
-        // Data for recipes
+        // Data for recipes with multi-image support
         const recipes = [
             {
                 id: 1,
@@ -333,7 +335,9 @@
                 desc: 'Salmão sucinto temperado com azeite, alho e louro, servido com batatas, cenouras e feijão verde.',
                 time: '35 min',
                 difficulty: 'Fácil',
-                image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=800&auto=format&fit=crop',
+                images: [
+                    'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=800&auto=format&fit=crop'
+                ],
                 ingredients: [
                     '2 postas de salmão fresco',
                     '3 batatas médias',
@@ -356,7 +360,9 @@
                 desc: 'Laminado fino de polvo cozido, regado com azeite de ervas, flor de sal e vinagrete fresco.',
                 time: '20 min',
                 difficulty: 'Média',
-                image: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=800&auto=format&fit=crop',
+                images: [
+                    'https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=800&auto=format&fit=crop'
+                ],
                 ingredients: [
                     '300g de tentáculos de polvo cozidos',
                     'Sumo de 1/2 limão e 1/2 laranja',
@@ -378,8 +384,8 @@
                 time: '30 min',
                 difficulty: 'Média',
                 images: [
-                    'https://instagram.flis5-4.fna.fbcdn.net/v/t51.82787-15/846050504_17951269908321178_5660046217983181638_n.webp?_nc_cat=101&_nc_map=urlgen_bucketless&ig_cache_key=NDAwNTczNTE0MTc5MDIzODc0OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=kQC6Ok_GlVkQ7kNvwFo3bj2&_nc_oc=AdoVmp8iJ5FHfvbVup2ITVYCCBNz6OudsxGnTAslGWSVU_Zk-WYrMWSmbXDG6jqc1h-1wJMjEc2NzidQR20FNAZm&_nc_zt=23&_nc_ht=instagram.flis5-4.fna&_nc_gid=5Q3yX8iZplEAS1fsDp66zw&_nc_ss=7b6a8&oh=00_AQMTYD55jiqDxr6lC9aiiRNMortyQMJE52_F6r3jv9fIFQ&oe=6AE4B5A9',
-                    'https://instagram.flis5-4.fna.fbcdn.net/v/t51.82787-15/845543159_17951269923321178_3112412350048644515_n.webp?_nc_cat=104&_nc_map=urlgen_bucketless&ig_cache_key=NDAwNTczNTE0Mzc1MzMzNTQ2NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=9jIt2jGx3IgQ7kNvwGUAdoQ&_nc_oc=AdpUb5RVL3vOgPLkKC-li32TA_qI8AHlIBHhuL7En_haC71IAhRpQQDgl5j6QvwRb5HjbVOWKDP6jKtKczs1kHtD&_nc_zt=23&_nc_ht=instagram.flis5-4.fna&_nc_gid=5Q3yX8iZplEAS1fsDp66zw&_nc_ss=7b6a8&oh=00_AQNvdcCNjwpymDd8UsMqkpiGhFtRGqQRZtEWfmQmpquSoQ&oe=6AE48C30'
+                    'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=800&auto=format&fit=crop'
                 ],
                 ingredients: [
                     '2 nacos de lombo de novilho (200g cada)',
@@ -402,7 +408,9 @@
                 desc: 'Sobremesa clássica e cremosa aromatizada com vagem de baunilha e coulis caseiro.',
                 time: '25 min (+ 4h frio)',
                 difficulty: 'Fácil',
-                image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=800&auto=format&fit=crop',
+                images: [
+                    'https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=800&auto=format&fit=crop'
+                ],
                 ingredients: [
                     '400ml de natas frescas',
                     '60g de açúcar',
@@ -419,7 +427,9 @@
             }
         ];
 
-        // Render recipes
+        // Track image index for each card carousel
+        const cardIndices = {};
+
         function renderRecipes(filter = 'all') {
             const grid = document.getElementById('recipeGrid');
             grid.innerHTML = '';
@@ -427,24 +437,47 @@
             const filtered = filter === 'all' ? recipes : recipes.filter(r => r.category === filter);
 
             filtered.forEach(recipe => {
+                // Support both single 'image' or multi 'images' array
+                const imgList = recipe.images || [recipe.image];
+                if (cardIndices[recipe.id] === undefined) cardIndices[recipe.id] = 0;
+                const currentImgIdx = cardIndices[recipe.id];
+
                 const card = document.createElement('div');
-                card.className = 'glass-card rounded-2xl overflow-hidden shadow-xl hover:border-brand-gold/40 transition-all cursor-pointer flex flex-col justify-between';
-                card.onclick = () => openModal(recipe.id);
+                card.className = 'glass-card rounded-2xl overflow-hidden shadow-xl hover:border-brand-gold/40 transition-all flex flex-col justify-between';
+
+                let carouselHTML = `
+                    <div class="relative h-48 overflow-hidden group bg-black">
+                        <img src="${imgList[currentImgIdx]}" alt="${recipe.title}" class="w-full h-full object-cover transition-opacity duration-300">
+                        <span class="absolute top-3 left-3 bg-black/70 backdrop-blur-md border border-white/10 text-brand-gold text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider z-10">
+                            ${recipe.category}
+                        </span>
+                `;
+
+                if (imgList.length > 1) {
+                    carouselHTML += `
+                        <button onclick="event.stopPropagation(); changeCardImage(${recipe.id}, -1)" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black">
+                            <i class="fa-solid fa-chevron-left text-xs"></i>
+                        </button>
+                        <button onclick="event.stopPropagation(); changeCardImage(${recipe.id}, 1)" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+                        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 z-10">
+                            ${imgList.map((_, i) => `<span class="w-1.5 h-1.5 rounded-full ${i === currentImgIdx ? 'bg-brand-gold w-3' : 'bg-white/50'} transition-all"></span>`).join('')}
+                        </div>
+                    `;
+                }
+
+                carouselHTML += `</div>`;
 
                 card.innerHTML = `
-                    <div>
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="${recipe.image}" alt="${recipe.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                            <span class="absolute top-3 left-3 bg-black/70 backdrop-blur-md border border-white/10 text-brand-gold text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
-                                ${recipe.category}
-                            </span>
-                        </div>
+                    <div class="cursor-pointer" onclick="openModal(${recipe.id})">
+                        ${carouselHTML}
                         <div class="p-6">
                             <h3 class="serif-title text-xl font-bold text-white mb-2 hover:text-brand-gold transition-colors">${recipe.title}</h3>
                             <p class="text-gray-400 text-sm line-clamp-2 leading-relaxed mb-4">${recipe.desc}</p>
                         </div>
                     </div>
-                    <div class="px-6 pb-6 pt-0 flex items-center justify-between text-xs text-gray-400 border-t border-white/5 pt-4">
+                    <div class="px-6 pb-6 pt-0 flex items-center justify-between text-xs text-gray-400 border-t border-white/5 pt-4 cursor-pointer" onclick="openModal(${recipe.id})">
                         <span><i class="fa-regular fa-clock text-brand-gold mr-1"></i> ${recipe.time}</span>
                         <span class="text-brand-gold font-medium">Ver Receita →</span>
                     </div>
@@ -453,27 +486,53 @@
             });
         }
 
-        // Filter button styles
-        function filterRecipes(cat) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('bg-brand-gold', 'text-black');
-                btn.classList.add('glass-card', 'text-gray-300');
-            });
-            event.target.classList.remove('glass-card', 'text-gray-300');
-            event.target.classList.add('bg-brand-gold', 'text-black');
+        function changeCardImage(recipeId, direction) {
+            const recipe = recipes.find(r => r.id === recipeId);
+            if (!recipe) return;
+            const imgList = recipe.images || [recipe.image];
+            
+            let newIdx = cardIndices[recipeId] + direction;
+            if (newIdx < 0) newIdx = imgList.length - 1;
+            if (newIdx >= imgList.length) newIdx = 0;
+            
+            cardIndices[recipeId] = newIdx;
+            const activeFilter = document.querySelector('.filter-btn.bg-brand-gold')?.textContent.toLowerCase() || 'todos';
+            let cat = 'all';
+            if(activeFilter.includes('entrada')) cat = 'entrada';
+            if(activeFilter.includes('peixe')) cat = 'peixe';
+            if(activeFilter.includes('carne')) cat = 'carne';
+            if(activeFilter.includes('sobremesa')) cat = 'sobremesa';
+            
             renderRecipes(cat);
         }
 
-        // Modal Functions
+        // Filter button styles
+        function filterRecipes(cat) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-gold', 'text-black', 'active');
+                btn.classList.add('glass-card', 'text-gray-300');
+            });
+            event.target.classList.remove('glass-card', 'text-gray-300');
+            event.target.classList.add('bg-brand-gold', 'text-black', 'active');
+            renderRecipes(cat);
+        }
+
+        // Modal Functions with Carousel Support
+        let modalCurrentImgIdx = 0;
+        let currentModalRecipe = null;
+
         function openModal(id) {
             const r = recipes.find(item => item.id === id);
             if(!r) return;
+            currentModalRecipe = r;
+            modalCurrentImgIdx = 0;
 
             document.getElementById('modalCategory').innerText = r.category;
             document.getElementById('modalTitle').innerText = r.title;
-            document.getElementById('modalImage').src = r.image;
             document.getElementById('modalTime').innerText = r.time;
             document.getElementById('modalDifficulty').innerText = r.difficulty;
+
+            updateModalCarousel();
 
             const ingList = document.getElementById('modalIngredients');
             ingList.innerHTML = r.ingredients.map(i => `<li>${i}</li>`).join('');
@@ -485,6 +544,38 @@
             modal.classList.remove('opacity-0', 'pointer-events-none');
         }
 
+        function updateModalCarousel() {
+            if(!currentModalRecipe) return;
+            const container = document.getElementById('modalImagesContainer');
+            const imgs = currentModalRecipe.images || [currentModalRecipe.image];
+
+            let html = `<img src="${imgs[modalCurrentImgIdx]}" class="w-full h-full object-cover">`;
+
+            if(imgs.length > 1) {
+                html += `
+                    <button onclick="changeModalImage(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/70 text-white flex items-center justify-center hover:bg-black transition-colors">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button onclick="changeModalImage(1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/70 text-white flex items-center justify-center hover:bg-black transition-colors">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
+                        ${imgs.map((_, i) => `<span class="w-2 h-2 rounded-full ${i === modalCurrentImgIdx ? 'bg-brand-gold w-4' : 'bg-white/50'} transition-all"></span>`).join('')}
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+        }
+
+        function changeModalImage(direction) {
+            if(!currentModalRecipe) return;
+            const imgs = currentModalRecipe.images || [currentModalRecipe.image];
+            modalCurrentImgIdx += direction;
+            if(modalCurrentImgIdx < 0) modalCurrentImgIdx = imgs.length - 1;
+            if(modalCurrentImgIdx >= imgs.length) modalCurrentImgIdx = 0;
+            updateModalCarousel();
+        }
+
         function closeModal() {
             const modal = document.getElementById('recipeModal');
             modal.classList.add('opacity-0', 'pointer-events-none');
@@ -494,27 +585,3 @@
         function sendToWhatsApp(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
-            const eventType = document.getElementById('eventType').value;
-            const date = document.getElementById('eventDate').value;
-            const guests = document.getElementById('guests').value;
-            const notes = document.getElementById('notes').value;
-
-            // Insere aqui o teu número com indicativo (Ex: 351910000000)
-            const phoneNumber = "351937461528"; 
-
-            const text = `Olá Chef! Gostaria de solicitar um orçamento:%0A%0A- *Nome:* ${name}%0A- *Tipo de Evento:* ${eventType}%0A- *Data Pretendida:* ${date || 'A definir'}%0A- *Nº de Pessoas:* ${guests || 'N/A'}%0A- *Notas/Preferências:* ${notes || 'Nenhuma'}`;
-
-            window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
-        }
-
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Initial render
-        renderRecipes();
-    </script>
-</body>
-</html>
