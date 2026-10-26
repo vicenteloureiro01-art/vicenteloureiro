@@ -69,7 +69,6 @@
                 <a href="#recipes" class="hover:text-brand-gold transition-colors">Menu & Receitas</a>
                 <a href="#services" class="hover:text-brand-gold transition-colors">Serviços</a>
                 <a href="#reserva" class="hover:text-brand-gold transition-colors">Agendar / Reservar</a>
-                <a href="#contact" class="px-5 py-2.5 rounded-full bg-brand-gold text-black font-semibold hover:bg-yellow-400 transition-all shadow-md shadow-brand-gold/20">Contratar Chef</a>
             </nav>
             <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-white focus:outline-none">
                 <i class="fa-solid fa-bars" id="menuIcon"></i>
@@ -81,7 +80,6 @@
             <a href="#recipes" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-gold py-1">Menu & Receitas</a>
             <a href="#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-gold py-1">Serviços</a>
             <a href="#reserva" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-gold py-1">Agendar / Reservar</a>
-            <a href="#contact" onclick="toggleMobileMenu()" class="inline-block w-full text-center py-2.5 rounded-full bg-brand-gold text-black font-semibold">Contratar Chef</a>
         </div>
     </header>
     <main>
@@ -215,14 +213,14 @@
             </div>
         </section>
 
-        <!-- Availability / Reservation Section (New Module) -->
+        <!-- Availability & Reservation Section (Unified) -->
         <section id="reserva" class="py-20 bg-black/40 border-b border-white/5">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <span class="text-brand-gold text-sm font-semibold uppercase tracking-widest block mb-2">Disponibilidade & Agenda</span>
                     <h2 class="serif-title text-3xl sm:text-4xl font-bold text-white mb-4">Consulta de Disponibilidade & Pedido de Reserva</h2>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Escolhe o dia e o horário pretendido para o teu evento privado. As solicitações não são confirmadas automaticamente: após o teu pedido, entrarei em contacto imediato para validar a disponibilidade final!
+                        Escolhe o dia, o horário e o tipo de evento pretendido. As solicitações não são confirmadas automaticamente: após o teu pedido, entrarei em contacto imediato para validar a disponibilidade final!
                     </p>
                 </div>
 
@@ -262,15 +260,25 @@
                             <input type="text" id="clientName" placeholder="Ex: Maria Santos" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
                         </div>
 
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Tipo de Evento</label>
+                                <select id="eventType" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
+                                    <option value="Jantar Privado">Jantar Privado</option>
+                                    <option value="Evento / Festa">Evento / Festa</option>
+                                    <option value="Workshop">Workshop</option>
+                                    <option value="Outro">Outro</option>
+                                </select>
+                            </div>
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Nº de Pessoas</label>
                                 <input type="number" id="guests" min="1" max="30" value="4" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
                             </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Localidade</label>
-                                <input type="text" id="location" placeholder="Ex: Lisboa / Portimão" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
-                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Localidade</label>
+                            <input type="text" id="location" placeholder="Ex: Lisboa / Portimão" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
                         </div>
 
                         <div>
@@ -286,53 +294,6 @@
                             * O envio da solicitação não garante a reserva. A data fica confirmada após validação direta do Chef.
                         </p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-20">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="glass-card p-8 sm:p-12 rounded-3xl border border-brand-gold/20 shadow-2xl relative overflow-hidden">
-                    <div class="text-center mb-10">
-                        <span class="text-brand-gold text-sm font-semibold uppercase tracking-widest block mb-2">Contacto Direto</span>
-                        <h2 class="serif-title text-3xl sm:text-4xl font-bold text-white">Solicitar Orçamento / Contratar</h2>
-                        <p class="text-gray-400 mt-2 text-sm">Preencha o formulário para enviar uma mensagem direta para o meu WhatsApp.</p>
-                    </div>
-                    <form id="contactForm" onsubmit="sendToWhatsApp(event)" class="space-y-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">O seu Nome</label>
-                                <input type="text" id="name" required placeholder="Ex: Maria Silva" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Tipo de Evento</label>
-                                <select id="eventType" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors">
-                                    <option value="Jantar Privado">Jantar Privado</option>
-                                    <option value="Evento / Festa">Evento / Festa</option>
-                                    <option value="Workshop">Workshop</option>
-                                    <option value="Outro">Outro</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Data Pretendida</label>
-                                <input type="date" id="eventDate" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Nº Estimado de Pessoas</label>
-                                <input type="number" id="guestsContact" placeholder="Ex: 4" min="1" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Detalhes / Preferências</label>
-                            <textarea id="notesContact" rows="4" placeholder="Indique restrições alimentares, localização aproximada ou preferências de menu..." class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors"></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-gold to-yellow-400 text-black font-bold text-lg hover:brightness-110 transition-all shadow-lg shadow-brand-gold/20 flex items-center justify-center gap-3">
-                            <i class="fa-brands fa-whatsapp text-2xl"></i> Enviar Pedido via WhatsApp
-                        </button>
-                    </form>
                 </div>
             </div>
         </section>
@@ -633,19 +594,6 @@
             modal.classList.add('opacity-0', 'pointer-events-none');
         }
 
-        // WhatsApp para Contacto Geral
-        function sendToWhatsApp(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const eventType = document.getElementById('eventType').value;
-            const date = document.getElementById('eventDate').value;
-            const guests = document.getElementById('guestsContact').value;
-            const notes = document.getElementById('notesContact').value;
-            const phoneNumber = "351937461528"; 
-            const text = `Olá Chef! Gostaria de solicitar um orçamento:%0A%0A- *Nome:* ${name}%0A- *Tipo de Evento:* ${eventType}%0A- *Data Pretendida:* ${date || 'A definir'}%0A- *Nº de Pessoas:* ${guests || 'N/A'}%0A- *Notas/Preferências:* ${notes || 'Nenhuma'}`;
-            window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
-        }
-
         // Script da Funcionalidade de Agendamento por Solicitação
         let selectedTimeSlot = '';
 
@@ -671,6 +619,7 @@
         function sendReservationRequest() {
             const date = document.getElementById('bookingDate').value;
             const name = document.getElementById('clientName').value.trim();
+            const eventType = document.getElementById('eventType').value;
             const guests = document.getElementById('guests').value;
             const location = document.getElementById('location').value.trim();
             const notes = document.getElementById('notes').value.trim();
@@ -686,8 +635,9 @@
 
             const phoneNumber = "351937461528";
 
-            let message = `Olá Vicente! Gostaria de fazer uma *Solicitação de Reserva* para o meu evento:%0A%0A`;
+            let message = `Olá Chef Vicente! Gostaria de fazer uma *Solicitação de Reserva*:%0A%0A`;
             message += `- *Nome:* ${name}%0A`;
+            message += `- *Tipo de Evento:* ${eventType}%0A`;
             message += `- *Data:* ${date}%0A`;
             message += `- *Horário:* ${selectedTimeSlot}%0A`;
             message += `- *Nº de Pessoas:* ${guests}%0A`;
