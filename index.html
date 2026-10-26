@@ -52,7 +52,6 @@
     </style>
 </head>
 <body class="antialiased selection:bg-brand-gold selection:text-black min-h-screen flex flex-col justify-between">
-
     <!-- Header / Navbar -->
     <header class="sticky top-0 z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -65,28 +64,26 @@
                     <span class="text-xs text-brand-gold uppercase tracking-widest block font-semibold">Gastronomia Exclusiva</span>
                 </div>
             </div>
-
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
                 <a href="#about" class="hover:text-brand-gold transition-colors">Sobre Mim</a>
                 <a href="#recipes" class="hover:text-brand-gold transition-colors">Menu & Receitas</a>
                 <a href="#services" class="hover:text-brand-gold transition-colors">Serviços</a>
+                <a href="#reserva" class="hover:text-brand-gold transition-colors">Agendar / Reservar</a>
                 <a href="#contact" class="px-5 py-2.5 rounded-full bg-brand-gold text-black font-semibold hover:bg-yellow-400 transition-all shadow-md shadow-brand-gold/20">Contratar Chef</a>
             </nav>
-
             <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-white focus:outline-none">
                 <i class="fa-solid fa-bars" id="menuIcon"></i>
             </button>
         </div>
-
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-brand-card border-b border-white/10 px-4 pt-2 pb-6 space-y-4">
             <a href="#about" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-gold py-1">Sobre Mim</a>
             <a href="#recipes" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-gold py-1">Menu & Receitas</a>
             <a href="#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-gold py-1">Serviços</a>
+            <a href="#reserva" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-brand-gold py-1">Agendar / Reservar</a>
             <a href="#contact" onclick="toggleMobileMenu()" class="inline-block w-full text-center py-2.5 rounded-full bg-brand-gold text-black font-semibold">Contratar Chef</a>
         </div>
     </header>
-
     <main>
         <!-- Hero Section -->
         <section class="relative py-20 lg:py-32 overflow-hidden flex items-center justify-center">
@@ -107,8 +104,8 @@
                     <a href="#recipes" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-gold text-black font-bold hover:bg-yellow-400 transition-all shadow-lg shadow-brand-gold/20 flex items-center justify-center gap-2">
                         <i class="fa-solid fa-book-open"></i> Ver Livro de Receitas
                     </a>
-                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full glass-card text-white font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2 border border-white/20">
-                        <i class="fa-solid fa-calendar-check"></i> Reservar Data
+                    <a href="#reserva" class="w-full sm:w-auto px-8 py-4 rounded-full glass-card text-white font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2 border border-white/20">
+                        <i class="fa-solid fa-calendar-check"></i> Consultar Disponibilidade
                     </a>
                 </div>
             </div>
@@ -163,7 +160,6 @@
                     <h2 class="serif-title text-3xl sm:text-5xl font-bold text-white mb-4">Livro de Receitas</h2>
                     <p class="text-gray-400">Explore algumas das minhas criações favoritas. Deslize pelas fotos de cada prato e clique para ver a receita completa.</p>
                 </div>
-
                 <!-- Filters -->
                 <div class="flex flex-wrap justify-center gap-2 mb-12">
                     <button onclick="filterRecipes('all')" class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold bg-brand-gold text-black transition-all">Todos</button>
@@ -172,7 +168,6 @@
                     <button onclick="filterRecipes('carne')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold glass-card text-gray-300 hover:text-white transition-all">Carne</button>
                     <button onclick="filterRecipes('sobremesa')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold glass-card text-gray-300 hover:text-white transition-all">Sobremesas</button>
                 </div>
-
                 <!-- Recipe Grid -->
                 <div id="recipeGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Recipes render dynamically -->
@@ -188,7 +183,6 @@
                     <h2 class="serif-title text-3xl sm:text-4xl font-bold text-white mb-4">Como Posso Ajudar?</h2>
                     <p class="text-gray-400">Soluções gastronómicas adaptadas às suas necessidades.</p>
                 </div>
-
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="glass-card p-8 rounded-2xl hover:border-brand-gold/40 transition-all">
                         <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6">
@@ -199,7 +193,6 @@
                             Menu degustação elaborado exclusivamente para a sua ocasião especial. Trato das compras, da preparação, do serviço de mesa e da limpeza final.
                         </p>
                     </div>
-
                     <div class="glass-card p-8 rounded-2xl hover:border-brand-gold/40 transition-all">
                         <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6">
                             <i class="fa-solid fa-users"></i>
@@ -209,7 +202,6 @@
                             Catering personalizado para pequenos grupos, aniversários, reuniões corporativas ou eventos de convívio familiar.
                         </p>
                     </div>
-
                     <div class="glass-card p-8 rounded-2xl hover:border-brand-gold/40 transition-all">
                         <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6">
                             <i class="fa-solid fa-hat-cowboy-side"></i>
@@ -217,6 +209,81 @@
                         <h3 class="serif-title text-xl font-bold text-white mb-3">Workshops ao Domicílio</h3>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
                             Aprenda técnicas de cozinha profissional diretamente na sua cozinha, num ambiente descontraído e divertido.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Availability / Reservation Section (New Module) -->
+        <section id="reserva" class="py-20 bg-black/40 border-b border-white/5">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-gold text-sm font-semibold uppercase tracking-widest block mb-2">Disponibilidade & Agenda</span>
+                    <h2 class="serif-title text-3xl sm:text-4xl font-bold text-white mb-4">Consulta de Disponibilidade & Pedido de Reserva</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Escolhe o dia e o horário pretendido para o teu evento privado. As solicitações não são confirmadas automaticamente: após o teu pedido, entrarei em contacto imediato para validar a disponibilidade final!
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 sm:p-12 rounded-3xl border border-brand-gold/20 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Seleção de Data e Hora (Esquerda) -->
+                    <div class="lg:col-span-6 space-y-6">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">1. Seleciona a Data Pretendida</label>
+                            <input type="date" id="bookingDate" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">2. Seleciona o Horário Estimado</label>
+                            <div class="grid grid-cols-2 gap-3" id="timeSlots">
+                                <button type="button" onclick="selectTime('12:30')" class="time-btn glass-card p-3 rounded-xl hover:border-brand-gold text-gray-300 hover:text-white font-medium text-sm transition-all text-center">
+                                    <i class="fa-regular fa-clock mr-1 text-brand-gold"></i> Almoço (12:30)
+                                </button>
+                                <button type="button" onclick="selectTime('13:30')" class="time-btn glass-card p-3 rounded-xl hover:border-brand-gold text-gray-300 hover:text-white font-medium text-sm transition-all text-center">
+                                    <i class="fa-regular fa-clock mr-1 text-brand-gold"></i> Almoço (13:30)
+                                </button>
+                                <button type="button" onclick="selectTime('19:30')" class="time-btn glass-card p-3 rounded-xl hover:border-brand-gold text-gray-300 hover:text-white font-medium text-sm transition-all text-center">
+                                    <i class="fa-regular fa-clock mr-1 text-brand-gold"></i> Jantar (19:30)
+                                </button>
+                                <button type="button" onclick="selectTime('20:30')" class="time-btn glass-card p-3 rounded-xl hover:border-brand-gold text-gray-300 hover:text-white font-medium text-sm transition-all text-center">
+                                    <i class="fa-regular fa-clock mr-1 text-brand-gold"></i> Jantar (20:30)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulário de Detalhes (Direita) -->
+                    <div class="lg:col-span-6 space-y-4">
+                        <h3 class="serif-title font-semibold text-white text-lg border-b border-white/10 pb-2">3. Detalhes do Evento</h3>
+                        
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Teu Nome Completo</label>
+                            <input type="text" id="clientName" placeholder="Ex: Maria Santos" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Nº de Pessoas</label>
+                                <input type="number" id="guests" min="1" max="30" value="4" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Localidade</label>
+                                <input type="text" id="location" placeholder="Ex: Lisboa / Portimão" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Observações ou Preferências</label>
+                            <textarea id="notes" rows="2" placeholder="Alergias, tipo de menu pretendido, etc." class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold text-sm transition-colors"></textarea>
+                        </div>
+
+                        <button type="button" onclick="sendReservationRequest()" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-gold to-yellow-400 text-black font-bold text-base hover:brightness-110 transition-all shadow-lg shadow-brand-gold/20 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> Enviar Solicitação via WhatsApp
+                        </button>
+                        
+                        <p class="text-xs text-gray-400 text-center italic">
+                            * O envio da solicitação não garante a reserva. A data fica confirmada após validação direta do Chef.
                         </p>
                     </div>
                 </div>
@@ -232,7 +299,6 @@
                         <h2 class="serif-title text-3xl sm:text-4xl font-bold text-white">Solicitar Orçamento / Contratar</h2>
                         <p class="text-gray-400 mt-2 text-sm">Preencha o formulário para enviar uma mensagem direta para o meu WhatsApp.</p>
                     </div>
-
                     <form id="contactForm" onsubmit="sendToWhatsApp(event)" class="space-y-6">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
@@ -249,7 +315,6 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Data Pretendida</label>
@@ -257,15 +322,13 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Nº Estimado de Pessoas</label>
-                                <input type="number" id="guests" placeholder="Ex: 4" min="1" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                                <input type="number" id="guestsContact" placeholder="Ex: 4" min="1" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors">
                             </div>
                         </div>
-
                         <div>
                             <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Detalhes / Preferências</label>
-                            <textarea id="notes" rows="4" placeholder="Indique restrições alimentares, localização aproximada ou preferências de menu..." class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors"></textarea>
+                            <textarea id="notesContact" rows="4" placeholder="Indique restrições alimentares, localização aproximada ou preferências de menu..." class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white focus:outline-none focus:border-brand-gold transition-colors"></textarea>
                         </div>
-
                         <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-gold to-yellow-400 text-black font-bold text-lg hover:brightness-110 transition-all shadow-lg shadow-brand-gold/20 flex items-center justify-center gap-3">
                             <i class="fa-brands fa-whatsapp text-2xl"></i> Enviar Pedido via WhatsApp
                         </button>
@@ -288,14 +351,12 @@
             <button onclick="closeModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center transition-colors z-10">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
-
             <span id="modalCategory" class="text-brand-gold text-xs font-semibold uppercase tracking-widest block mb-2"></span>
             <h3 id="modalTitle" class="serif-title text-2xl sm:text-3xl font-bold text-white mb-4"></h3>
             
             <div id="modalImagesContainer" class="relative h-64 rounded-xl overflow-hidden mb-6 bg-black">
                 <!-- Carousel injected dynamically -->
             </div>
-
             <div class="grid grid-cols-2 gap-4 mb-6 border-y border-white/10 py-4">
                 <div>
                     <span class="text-xs text-gray-400 block">Tempo de Preparação</span>
@@ -306,7 +367,6 @@
                     <span id="modalDifficulty" class="text-white font-semibold"></span>
                 </div>
             </div>
-
             <div class="space-y-6">
                 <div>
                     <h4 class="text-white font-bold text-lg mb-3 flex items-center gap-2">
@@ -314,12 +374,10 @@
                     </h4>
                     <ul id="modalIngredients" class="list-disc list-inside space-y-1 text-gray-300 text-sm"></ul>
                 </div>
-
                 <div>
                     <h4 class="text-white font-bold text-lg mb-3 flex items-center gap-2">
                         <i class="fa-solid fa-fire-burner text-brand-gold"></i> Modo de Preparação
                     </h4>
-                    <!-- Agora usa div em vez de lista para aceitar as linhas em branco -->
                     <div id="modalSteps" class="space-y-3 text-gray-300 text-sm leading-relaxed"></div>
                 </div>
             </div>
@@ -444,17 +502,13 @@
         function renderRecipes(filter = 'all') {
             const grid = document.getElementById('recipeGrid');
             grid.innerHTML = '';
-
             const filtered = filter === 'all' ? recipes : recipes.filter(r => r.category === filter);
-
             filtered.forEach(recipe => {
                 const imgList = recipe.images || [recipe.image];
                 if (cardIndices[recipe.id] === undefined) cardIndices[recipe.id] = 0;
                 const currentImgIdx = cardIndices[recipe.id];
-
                 const card = document.createElement('div');
                 card.className = 'glass-card rounded-2xl overflow-hidden shadow-xl hover:border-brand-gold/40 transition-all flex flex-col justify-between';
-
                 let carouselHTML = `
                     <div class="relative h-48 overflow-hidden group bg-black">
                         <img src="${imgList[currentImgIdx]}" alt="${recipe.title}" class="w-full h-full object-cover transition-opacity duration-300">
@@ -462,7 +516,6 @@
                             ${recipe.category}
                         </span>
                 `;
-
                 if (imgList.length > 1) {
                     carouselHTML += `
                         <button onclick="event.stopPropagation(); changeCardImage(${recipe.id}, -1)" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black">
@@ -476,9 +529,7 @@
                         </div>
                     `;
                 }
-
                 carouselHTML += `</div>`;
-
                 card.innerHTML = `
                     <div class="cursor-pointer" onclick="openModal(${recipe.id})">
                         ${carouselHTML}
@@ -534,21 +585,15 @@
             if(!r) return;
             currentModalRecipe = r;
             modalCurrentImgIdx = 0;
-
             document.getElementById('modalCategory').innerText = r.category;
             document.getElementById('modalTitle').innerText = r.title;
             document.getElementById('modalTime').innerText = r.time;
             document.getElementById('modalDifficulty').innerText = r.difficulty;
-
             updateModalCarousel();
-
             const ingList = document.getElementById('modalIngredients');
             ingList.innerHTML = r.ingredients.map(i => `<li>${i}</li>`).join('');
-
-            // Converte linhas vazias em espaços em branco limpos (enter) em vez de pontos vazios
             const stepsList = document.getElementById('modalSteps');
             stepsList.innerHTML = r.steps.map(s => s === '' ? '<div class="h-2"></div>' : `<p>${s}</p>`).join('');
-
             const modal = document.getElementById('recipeModal');
             modal.classList.remove('opacity-0', 'pointer-events-none');
         }
@@ -557,9 +602,7 @@
             if(!currentModalRecipe) return;
             const container = document.getElementById('modalImagesContainer');
             const imgs = currentModalRecipe.images || [currentModalRecipe.image];
-
             let html = `<img src="${imgs[modalCurrentImgIdx]}" class="w-full h-full object-cover">`;
-
             if(imgs.length > 1) {
                 html += `
                     <button onclick="changeModalImage(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/70 text-white flex items-center justify-center hover:bg-black transition-colors">
@@ -590,19 +633,70 @@
             modal.classList.add('opacity-0', 'pointer-events-none');
         }
 
+        // WhatsApp para Contacto Geral
         function sendToWhatsApp(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
             const eventType = document.getElementById('eventType').value;
             const date = document.getElementById('eventDate').value;
-            const guests = document.getElementById('guests').value;
-            const notes = document.getElementById('notes').value;
-
+            const guests = document.getElementById('guestsContact').value;
+            const notes = document.getElementById('notesContact').value;
             const phoneNumber = "351937461528"; 
-
             const text = `Olá Chef! Gostaria de solicitar um orçamento:%0A%0A- *Nome:* ${name}%0A- *Tipo de Evento:* ${eventType}%0A- *Data Pretendida:* ${date || 'A definir'}%0A- *Nº de Pessoas:* ${guests || 'N/A'}%0A- *Notas/Preferências:* ${notes || 'Nenhuma'}`;
-
             window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+        }
+
+        // Script da Funcionalidade de Agendamento por Solicitação
+        let selectedTimeSlot = '';
+
+        const today = new Date().toISOString().split('T')[0];
+        const bookingDateInput = document.getElementById('bookingDate');
+        if (bookingDateInput) {
+            bookingDateInput.min = today;
+            bookingDateInput.value = today;
+        }
+
+        function selectTime(time) {
+            selectedTimeSlot = time;
+            const buttons = document.querySelectorAll('.time-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-gold', 'text-black', 'border-brand-gold', 'font-bold');
+                btn.classList.add('glass-card', 'text-gray-300');
+            });
+
+            event.currentTarget.classList.remove('glass-card', 'text-gray-300');
+            event.currentTarget.classList.add('bg-brand-gold', 'text-black', 'border-brand-gold', 'font-bold');
+        }
+
+        function sendReservationRequest() {
+            const date = document.getElementById('bookingDate').value;
+            const name = document.getElementById('clientName').value.trim();
+            const guests = document.getElementById('guests').value;
+            const location = document.getElementById('location').value.trim();
+            const notes = document.getElementById('notes').value.trim();
+
+            if (!name) {
+                alert('Por favor, insere o teu nome.');
+                return;
+            }
+            if (!selectedTimeSlot) {
+                alert('Por favor, seleciona um horário pretendido.');
+                return;
+            }
+
+            const phoneNumber = "351937461528";
+
+            let message = `Olá Chef Vicente! Gostaria de fazer uma *Solicitação de Reserva* para o meu evento:%0A%0A`;
+            message += `- *Nome:* ${name}%0A`;
+            message += `- *Data:* ${date}%0A`;
+            message += `- *Horário:* ${selectedTimeSlot}%0A`;
+            message += `- *Nº de Pessoas:* ${guests}%0A`;
+            if (location) message += `- *Local:* ${location}%0A`;
+            if (notes) message += `- *Observações:* ${notes}%0A`;
+            message += `%0AFico a aguardar a confirmação da disponibilidade!`;
+
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
         }
 
         function toggleMobileMenu() {
