@@ -49,7 +49,6 @@
         .recipe-modal {
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
-        /* Estilo personalizado para os seletores de data nativos ficarem escuros e elegantes */
         input[type="date"]::-webkit-calendar-picker-indicator {
             filter: invert(1);
             cursor: pointer;
@@ -195,7 +194,6 @@
                             <label class="block text-xs font-semibold uppercase tracking-wider text-brand-gold mb-3 flex items-center gap-2">
                                 <i class="fa-solid fa-calendar-days"></i> 1. Seleciona a Data no Calendário
                             </label>
-                            <!-- Input de Data estilizado como um painel de calendário elegante -->
                             <div class="bg-black/60 border border-brand-gold/30 rounded-2xl p-4 text-center">
                                 <input type="date" id="bookingDate" class="w-full bg-transparent text-white text-lg font-semibold py-3 px-4 focus:outline-none cursor-pointer text-center">
                             </div>
@@ -368,8 +366,8 @@
                 time: '30 min',
                 difficulty: 'Média',
                 images: [
-                    'https://ibb.co/DPYtS4cC',
-                    'https://ibb.co/ZRchHYYw'
+                    'https://i.ibb.co/6R22tS7W/DPYtS4cC.jpg',
+                    'https://i.ibb.co/5gp0Qv9Y/ZRchHYYw.jpg'
                 ],
                 ingredients: [
                     '5x Batatas vermelhas Grandes',
@@ -558,65 +556,4 @@
             modal.classList.add('opacity-0', 'pointer-events-none');
         }
 
-        // Script da Funcionalidade de Agendamento por Calendário
-        let selectedTimeSlot = '';
-
-        const today = new Date().toISOString().split('T')[0];
-        const bookingDateInput = document.getElementById('bookingDate');
-        if (bookingDateInput) {
-            bookingDateInput.min = today;
-            bookingDateInput.value = today;
-        }
-
-        function selectTime(time) {
-            selectedTimeSlot = time;
-            const buttons = document.querySelectorAll('.time-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-brand-gold', 'text-black', 'border-brand-gold', 'font-bold');
-                btn.classList.add('glass-card', 'text-gray-300');
-            });
-
-            event.currentTarget.classList.remove('glass-card', 'text-gray-300');
-            event.currentTarget.classList.add('bg-brand-gold', 'text-black', 'border-brand-gold', 'font-bold');
-        }
-
-        function sendReservationRequest() {
-            const date = document.getElementById('bookingDate').value;
-            const name = document.getElementById('clientName').value.trim();
-            const guests = document.getElementById('guests').value;
-            const location = document.getElementById('location').value.trim();
-            const notes = document.getElementById('notes').value.trim();
-
-            if (!name) {
-                alert('Por favor, insere o teu nome.');
-                return;
-            }
-            if (!selectedTimeSlot) {
-                alert('Por favor, seleciona um horário pretendido.');
-                return;
-            }
-
-            const phoneNumber = "351937461528";
-
-            let message = `Olá Chef Vicente! Gostaria de fazer uma *Solicitação de Reserva*:%0A%0A`;
-            message += `- *Nome:* ${name}%0A`;
-            message += `- *Data:* ${date}%0A`;
-            message += `- *Horário:* ${selectedTimeSlot}%0A`;
-            message += `- *Nº de Pessoas:* ${guests}%0A`;
-            if (location) message += `- *Local:* ${location}%0A`;
-            if (notes) message += `- *Observações:* ${notes}%0A`;
-            message += `%0AFico a aguardar a confirmação da disponibilidade!`;
-
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-            window.open(whatsappURL, '_blank');
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        renderRecipes();
-    </script>
-</body>
-</html>
+        // Script da Funcionalidade de Agendamento por
